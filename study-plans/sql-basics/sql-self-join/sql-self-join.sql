@@ -1,5 +1,6 @@
 -- Write your SQL query here
-SELECT e.username, COALESCE(m.username,'organic') as referrer_name
-FROM user_referrals e
-LEFT JOIN user_referrals m ON e.referred_by = m.id
-ORDER BY e.username ASC;
+SELECT m.username , COALESCE(n.username, 'organic') as referrer_name,
+FROM user_referrals m
+LEFT JOIN user_referrals n 
+ON m.referred_by = n.id
+ORDER BY m.username ASC
